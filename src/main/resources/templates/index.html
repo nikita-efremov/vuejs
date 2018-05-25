@@ -2,18 +2,19 @@
 <html lang="en">
 <head>
     <meta charset="UTF-8">
-    <title>My Test App</title>
+    <title>eCare</title>
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/skeleton/2.0.4/skeleton.min.css" />
 </head>
 <body>
 <div id="root" class="container">
     <div class="row">
         <div class="twelve columns">
-            <h1>Test App</h1>
+            <h1>Available tariffs</h1>
             <ul>
-                <li v-for="post in posts">
-                    <h3> {{post.title}} </h3>
-                    <p> {{post.body}} </p>
+                <li v-for="tariff in tariffs">
+                    <h3> {{tariff.title}} </h3>
+                    <p> {{tariff.description}} </p>
+                    <p> {{tariff.price}} </p>
                 </li>
             </ul>
         </div>
@@ -26,14 +27,14 @@
 <script>
     var app = new Vue({
         el: '#root',
-        data: {posts: []},
+        data: {tariffs: []},
         mounted() {
-            this.fetchPosts();
+            this.fetchTariffs();
         },
         methods: {
-            fetchPosts(){
-                axios.get("/posts").then(function(response){
-                    this.posts = response.data;
+            fetchTariffs(){
+                axios.get("/tariffs").then(function(response){
+                    this.tariffs = response.data;
                 }.bind(this));
             }
         }
