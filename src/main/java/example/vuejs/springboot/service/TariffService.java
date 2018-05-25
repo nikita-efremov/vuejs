@@ -23,21 +23,21 @@ public class TariffService {
     public void init() {
         Tariff tariff1 = new Tariff();
         tariff1.setId(1L);
-        tariff1.setTitle("Magenta Mobil S");
-        tariff1.setDescription("Long description for Magenta Mobil S");
-        tariff1.setPrice(45.4);
+        tariff1.setTitle("Magenta Mobil XL Premium");
+        tariff1.setDescription("Telefon- und SMS Flat in alle dt. Netze. Unbegrenzte Daten-Flat (LTE Max). Inkl. Top-Smartphone, HotSpot-Flat, 2 zubuchbare MultiSIMs, Telefon- und SMS-Flat von Deutschland in die EU, Schweiz, USA, Kanada & Türkei sowie Roaming in diesen Ländern");
+        tariff1.setPrice(199.95);
 
         Tariff tariff2 = new Tariff();
         tariff2.setId(2L);
-        tariff2.setTitle("Magenta Mobil M");
-        tariff2.setDescription("Very Long description for Magenta Mobil M");
-        tariff2.setPrice(75.4);
+        tariff2.setTitle("Magenta Mobil L Top-H. Premium");
+        tariff2.setDescription("Das Flat-Paket mit TOP-Smartphone für Daten-Vielnutzer! Highspeed-Daten-Flat (6 GB, SSD, Max Speed) mit LTE-Nutzung inklusive sowie Telefon- und SMS-Flat in alle dt. Netze. HotSpot-Flat und All Inclusive und Premium VVL inklusive.");
+        tariff2.setPrice(84.95);
 
         Tariff tariff3 = new Tariff();
         tariff3.setId(3L);
-        tariff3.setTitle("Magenta Mobil L");
-        tariff3.setDescription("Extremely Long description for Magenta Mobil L");
-        tariff3.setPrice(175.4);
+        tariff3.setTitle("Magenta Mobil M mit Top-Handy");
+        tariff3.setDescription("Das Sorglospaket mit TOP-Smartphone für den Daten-Normalnutzer! Daten-Flat (4 GB, SSD, Max Speed) mit LTE-Nutzung inklusive sowie Telefon- und SMS-Flat in alle dt. Netze. Zusätzlich jetzt mit HotSpot-Flat und der Option All Inclusive inklusive.");
+        tariff3.setPrice(64.95);
 
         tariffRepository.save(tariff1);
         tariffRepository.save(tariff2);

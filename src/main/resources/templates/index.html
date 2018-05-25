@@ -3,22 +3,24 @@
 <head>
     <meta charset="UTF-8">
     <title>eCare</title>
-    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/skeleton/2.0.4/skeleton.min.css" />
+    <link rel="stylesheet" href="/css/main.css" />
 </head>
 <body>
-<div id="root" class="container">
-    <div class="row">
-        <div class="twelve columns">
-            <h1>Available tariffs</h1>
-            <ul>
-                <li v-for="tariff in tariffs">
-                    <h3> {{tariff.title}} </h3>
-                    <p> {{tariff.description}} </p>
-                    <p> {{tariff.price}} </p>
-                </li>
-            </ul>
+<div id="root">
+    <div id="tariffsBlock">
+        <h1>Available tariffs</h1>
+        <div v-for="tariff in tariffs">
+            <label>
+                <div>
+                    <input type="radio" v-model="tariff.chosen" :checked="tariff.chosen" v-on:click="choseTariff(tariff)">
+                    {{tariff.title}}
+                </div>
+                <div>{{tariff.description}}</div>
+                <div>{{tariff.price}} euro per month</div>
+            </label>
         </div>
     </div>
+    <div v-if="chosenTariff"> Chosen tariff: (monatl. {{chosenTariff}}EUR) </div>
 </div>
 
 </body>
@@ -27,7 +29,7 @@
 <script>
     var app = new Vue({
         el: '#root',
-        data: {tariffs: []},
+        data: {tariffs: [], chosenTariff:""},
         mounted() {
             this.fetchTariffs();
         },
@@ -36,6 +38,14 @@
                 axios.get("/tariffs").then(function(response){
                     this.tariffs = response.data;
                 }.bind(this));
+            },
+            choseTariff(tariff){
+                this.chosenTariff = tariff.title;
+                this.tariffs.forEach(function (t, i, tariffs) {
+                    if (t.id !== tariff.id) {
+                        tariffs[i].chosen = false
+                    }
+                })
             }
         }
     });
